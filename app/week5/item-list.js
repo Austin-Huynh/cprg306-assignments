@@ -27,16 +27,18 @@ export default function ItemList() {
             <div>
                 <button
                     onClick={handleSortByName}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-4"
                     style={{
-                        backgroundColor: sortBy === "name" ? "lightblue" : "white",
+                        backgroundColor: sortBy === "name" ? "darkblue" : "blue",
                     }}
                 >
                     Sort by Name
                 </button>
                 <button
                     onClick={handleSortByCategory}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-4"
                     style={{
-                        backgroundColor: sortBy === "category" ? "lightblue" : "white",
+                        backgroundColor: sortBy === "category" ? "darkblue" : "blue",
                     }}
                 >
                     Sort by Category
