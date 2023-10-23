@@ -1,20 +1,15 @@
 "use client";
-
 import { useState } from "react";
 
-export default function NewItem() {
-
+export default function NewItem({ onAddItem }) {
     const [name, setName] = useState("");
-
     const [quantity, setQuantity] = useState(1);
-
     const [category, setCategory] = useState("produce");
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const newItem = { name, quantity, category };
-        console.log(newItem);
-        alert(`Name: ${name}, Quantity: ${quantity}, Category: ${category}`);
+        onAddItem(newItem);
         setName("");
         setQuantity(1);
         setCategory("produce");
@@ -33,9 +28,9 @@ export default function NewItem() {
     }
     
     return (
-        <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <div className="w-full max-w-md bg-gray-800 p-8 rounded-lg shadow-md">
             <form onSubmit={handleSubmit}>
-                <label className="block mb 4">
+                <label className="block mb- 4">
                     <span className="text-gray-800">Name:</span>
                     <input
                     type="text"
@@ -77,14 +72,13 @@ export default function NewItem() {
                 </label>
 
                 <button
+                    class="btn btn-primary"
                     type="submit"
-                    className="w-full py-2 px-4 bg-sky-600 hover:bg-sky-500 rounded-md text-white"
+                    //className="w-full py-2 px-4 bg-sky-600 hover:bg-sky-500 rounded-md text-white"
                 >
                     Add Item
                 </button>
             </form>
         </div>
     );
-
-
 };

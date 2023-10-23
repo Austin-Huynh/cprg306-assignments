@@ -1,20 +1,31 @@
-import Link from 'next/link'
-import { StudentInfo } from './StudentInfo'
+import Link from 'next/link';
+import { StudentInfo } from './StudentInfo';
 
 export default function Home() {
   return (
-    <main>
-      <h1 className="text-4xl">CPRG 306: Web Development 2 - Assignments</h1>
+    <main data-theme="dark">
+      <h1 className="text-4xl">Web Development 2 - Assignments</h1>
       <StudentInfo />
-      <p>
-        <Link className="hover:text-blue-500" href="/week2">Week 2</Link>
-        <br />
-        <Link className="hover:text-blue-500" href="/week3">Week 3</Link>
-        <br />
-        <Link className="hover:text-blue-500" href="/week4">Week 4</Link>
-        <br />
-        <Link className="hover:text-blue-500" href="/week5">Week 5</Link>
+      <p className="mt-4">
+        <Link href="/week2">
+          <span className="block py-2 hover:text-blue-500 cursor-pointer">Week 2</span>
+        </Link>
+        <Link href="/week3">
+          <span className="block py-2 hover:text-blue-500 cursor-pointer">Week 3</span>
+        </Link>
+        <Link href="/week4">
+          <span className="block py-2 hover:text-blue-500 cursor-pointer">Week 4</span>
+        </Link>
+        <Link href="/week5">
+          <span className="block py-2 hover:text-blue-500 cursor-pointer">Week 5</span>
+        </Link>
+        <Link href="/week6">
+          <span className="block py-2 hover:text-blue-500 cursor-pointer">Week 6</span>
+        </Link>
       </p>
     </main>
-  )
+  );
 }
+
+
+
