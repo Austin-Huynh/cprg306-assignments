@@ -1,58 +1,40 @@
-// page.js
-import useState from "react";
-import ItemList from "./item-list";
-import NewItem from "./new-item";
-import itemsData from "./items.json";
-import MealIdeas from "./meal-ideas";
+"use client";
+import Link from 'next/link';
+import { useState } from 'react'; // Don't forget to import useState
+import ItemList from './item-list';
+import NewItem from './new-item';
+import MealIdeas from './meal-ideas';
+import itemData from './items.json';
 
-export default function Page() {
-  const [items, setItems] = useState(itemsData);
-  const [selectedItemName, setSelectedItemName] = useState("");
+function Page() {
+  const [selectedItemName, setSelectedItemName] = useState(""); // New state variable
+  const [items, setItems] = useState(itemData); // Assuming you have a state for items
   const [numberOfMeals, setNumberOfMeals] = useState(0);
 
-  const handleAddItem = (item) => {
-    setItems([...items, item]);
-  };
+  const handleItemSelect = (selectedItem) => {
+    // Extract and clean up the item name
+    const cleanedItemName = selectedItem.name.split(",")[0].replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uD000-\uDFFF]|\uD83D[\uDC00-\uDE4F]|�[�-�]|�[�-�]|[\u2011-\u26FF]|�[�-�])/g, '').trim();
 
-  const handleRemoveItem = (name) => {
-    setItems(items.filter((i) => i.name !== name));
+    // Update the selectedItemName state
+    setSelectedItemName(cleanedItemName);
   };
-
-  const handleItemSelect = (name) => {
-    var cleanedName = name
-      .split(",")[0]
-      .replace(/[^a-zA-Z ]/g, "") // Remove non-alphabet characters
-      .trim()
-      .toLowerCase();
-    setSelectedItemName(cleanedName);
-  };
+  const handleAddItem = (newItem) => {
+    setItems((prevItems) => [...prevItems, newItem]);
+};
 
   return (
-    <>
-      <NavBar />
-      <main className="bg-gray-900 mb-4 py-4 px-8 rounded grid grid-cols-4 gap-4">
-        {/* First Column */}
-        <div className="col-span-1">
-          <h1 className="text-white text-4xl font-bold m-4">Shopping List</h1>
-          <NewItem onAddItem={handleAddItem} />
-          <ItemList
-            items={items}
-            onDelete={handleRemoveItem}
-            onItemSelect={handleItemSelect}
-            numberOfMeals={numberOfMeals}
-          />
-        </div>
-
-        {/* Second Column */}
-        <div className="col-span-3">
-          <MealIdeas
-            ingredient={selectedItemName}
-            updateNumberOfMeals={setNumberOfMeals}
-          />
-        </div>
-      </main>
-    </>
+    <main className="bg-gray-900 mb-4 py-4 px-8 rounded flex">
+      <div>
+        <Link href="/" className="font-bold">Home</Link>
+        <h1 className="text-white">Shopping List</h1>
+        <NewItem onAddItem={handleAddItem} />
+        <ItemList items={items} onItemSelect={handleItemSelect} />
+      </div>
+      <MealIdeas ingredient={selectedItemName} updateNumberOfMeals={setNumberOfMeals} />
+    </main>
   );
 }
+
+export default Page;
 
 

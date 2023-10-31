@@ -22,6 +22,9 @@ export default function Home() {
         <Link href="/week6">
           <span className="block py-2 hover:text-blue-500 cursor-pointer">Week 6</span>
         </Link>
+        <Link href="/week7">
+          <span className="block py-2 hover:text-blue-500 cursor-pointer">Week 7</span>
+        </Link>
       </p>
     </main>
   );
