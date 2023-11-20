@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useUserAuth } from "./_utils/auth-context";
 import Link from "next/link";
 
