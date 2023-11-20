@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useUserAuth } from "./_utils/auth-context";
 import Link from "next/link";
 
@@ -29,7 +29,7 @@ export default function Page() {
             Welcome, {user.displayName} ({user.email})
           </p>
           <button onClick={handleLogout}>Logout</button>
-          <Link href="/week8/shopping-list">Go to Shopping List</Link>
+          <Link href="/week10/shopping-list">Go to Shopping List</Link>
         </div>
       ) : (
         <button onClick={handleLogin}>Login with GitHub</button>
